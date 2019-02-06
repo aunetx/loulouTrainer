@@ -1,0 +1,16 @@
+$font: 'Roboto', sans-serif;
+$font-mono: 'Courier Prime', monospace;
+$primary-bg-color: #E8E9EB;
+$primary-color: #313638;
+$header-bg-color: #F09D51;
+
+html, body, h1 {
+  margin:  0;
+  padding: 0;
+}
+
+body {
+  background-color: $primary-bg-color;
+  color: $primary-color;
+  font-family: $font;
+}

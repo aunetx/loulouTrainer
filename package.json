@@ -1,0 +1,25 @@
+{
+  "name": "loulou-trainer",
+  "version": "0.0.1",
+  "description": "GUI for training loulou - a simple neural network",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aunetx/loulouTrainer.git"
+  },
+  "author": "Aurélien Hamy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aunetx/loulouTrainer/issues"
+  },
+  "homepage": "https://github.com/aunetx/loulouTrainer#readme",
+  "devDependencies": {
+    "electron": "^4.0.4"
+  },
+  "dependencies": {
+    "sass": "^1.17.0"
+  }
+}
