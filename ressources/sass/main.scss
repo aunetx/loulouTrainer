@@ -1,16 +1,79 @@
 $font: 'Roboto', sans-serif;
 $font-mono: 'Courier Prime', monospace;
-$primary-bg-color: #E8E9EB;
-$primary-color: #313638;
-$header-bg-color: #F09D51;
 
-html, body, h1 {
-  margin:  0;
-  padding: 0;
-}
+$red: #F06543;
+$white: #E8E9EB;
+$beige: #E0DFD5;
+$black: #313638;
+$yellow: #F09D51;
+
+$primary-bg-color: $white;
+$primary-color: $black;
 
 body {
   background-color: $primary-bg-color;
   color: $primary-color;
   font-family: $font;
+}
+form {
+  #layerButtons {
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    button {
+      margin: 0 10px;
+      width: 15em;
+    }
+  }
+
+  #layers {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    div {
+      width: 100px;
+      height: 30px;
+      background-color: $beige;
+      position: relative;
+
+      .inputBefore {
+        @extend %input-buttons;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .inputAfter {
+        @extend %input-buttons;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      input {
+        width: 50%;
+        height: 100%;
+        padding: 0;
+        border: 0;
+        position: absolute;
+        top: 0;
+        left: 25%;
+        &[type=number]::-webkit-inner-spin-button,
+        &[type=number]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+%input-buttons {
+  width: 25%;
+  height: 100%;
+  display: block;
+  content: '';
+  background-color: blue;
 }

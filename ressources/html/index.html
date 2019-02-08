@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
   <head>
     <title>Loulou Trainer</title>
   <!-- Css inclusion -->
@@ -13,11 +13,28 @@
       <h1>Loulou Trainer</h1>
     </header>
     <section>
-      
+      <form>
+        <p>
+          <label for="trainname">Name of train</label> : <input type="text" name="trainname" placeholder="name" minlength="1" maxlength="25" size="10" autofocus required>
+          <fieldset>
+            <legend>Hyperparamètres</legend>
+            <label for="epochs">Number of epochs</label> : <input type="number" name="epochs" min="0" value="30"><br>
+            <label for="batch">Batch size</label> : <input type="number" name="batch" min="0" value="20"><br>
+            <label for="learning_rate">Number of epochs</label> : <input type="number" name="learning_rate" value="0.03" min="0" max="1" step="0.001">
+          </fieldset>
+          <div id="layerButtons">
+            <button onclick="addLayer()" type="button">Add layer</button>
+            <button onclick="removeLayer()" type="button">Remove layer</button>
+          </div>
+        </p>
+        <div id="layers">
+        </div>
+      </form>
     </section>
   <!-- End of main elements -->
 
   <!-- Scripts -->
+    <script src="../../frameworks/jquery-3.3.1.min.js"></script>
     <script src="../clientjs/main.js"></script>
   <!-- End of scripts -->
   </body>

@@ -17,7 +17,7 @@ function initCss(pathToSass, pathToCss) {
 }
 
 function createWindow () {
-  win = new BrowserWindow({ width: 800, height: 600 });
+  win = new BrowserWindow({ width: 1024, height: 768 });
   win.loadFile('ressources/html/index.html');
 }
 

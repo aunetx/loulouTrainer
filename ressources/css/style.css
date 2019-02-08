@@ -1,10 +1,58 @@
-html, body, h1 {
-  margin: 0;
-  padding: 0;
-}
-
 body {
   background-color: #E8E9EB;
   color: #313638;
   font-family: "Roboto", sans-serif;
+}
+
+form #layerButtons {
+  margin: 10px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+form #layerButtons button {
+  margin: 0 10px;
+  width: 15em;
+}
+form #layers {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+form #layers div {
+  width: 100px;
+  height: 30px;
+  background-color: #E0DFD5;
+  position: relative;
+}
+form #layers div .inputBefore {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+form #layers div .inputAfter {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+form #layers div input {
+  width: 50%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  top: 0;
+  left: 25%;
+}
+form #layers div input[type=number]::-webkit-inner-spin-button, form #layers div input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+form #layers div .inputBefore, form #layers div .inputAfter {
+  width: 25%;
+  height: 100%;
+  display: block;
+  content: "";
+  background-color: blue;
 }
