@@ -1,60 +1,45 @@
-architecture = {
-  0: 5,
-  1: 4
-};
+architecture = [
+  { type: 'input', neurons: 784, activation: 'relu' },
+  { type: 'hidden_1', neurons: 100, activation: 'relu' },
+  { type: 'output', neurons: 10, activation: 'relu' }
+]
 
-layersDiv = document.getElementById('layers');
-layerNumbers = {
-  0: addLayerDiv(),
-  1: addLayerDiv()
-};
+layers_container = document.getElementById('layersContainer');
 
-//  Proceed for two first layers
-for (var lid = 0; lid < Object.keys(layerNumbers).length; lid++) {
-  var input = addInputLayers(lid);
-  var before = layerNumbers[lid].appendChild(document.createElement("span"));
-  layerNumbers[lid].appendChild(input);
-  var after = layerNumbers[lid].appendChild(document.createElement("span"));
-  before.className += "inputBefore";
-  after.className += "inputAfter";
-}
-
-function addInputLayers(lid) {
-  var input = document.createElement("input");
-  if (architecture[lid] == null) {
-    architecture[lid] = 4;
+function initLayers() {
+  for (var layer of architecture) {
+    $(layers_container).append('<input type="number" value="'+ layer.neurons +'" name="layer_'+ layer.type +'" min="1" />');
   }
-  input.type = "number";
-  input.value = architecture[lid];
-  input.name = 'layer' + lid;
-  input.min = "0";
-  return input;
 }
 
-function addLayer() {
-  var layerDiv = addLayerDiv();
-  var nb = Object.keys(layerNumbers).length;
-  var input = addInputLayers(nb);
-  var before = layerDiv.appendChild(document.createElement("span"));
-  layerDiv.appendChild(input);
-  var after = layerDiv.appendChild(document.createElement("span"));
-  layerNumbers[nb] = layerDiv;
-  before.className += "inputBefore";
-  before.id = "inputBefore" + nb;
-  after.className += "inputAfter";
-  after.id = "inputAfter" + nb;
-  $("inputBefore" + nb).on('click', function() {
-    $(this).parent().children('input').hide();
-  })
-}
+initLayers();
 
-function addLayerDiv() {
-  return layersDiv.appendChild(document.createElement("div"));
-}
-
-function removeLayer() {
-  if (Object.keys(layerNumbers).length > 2) {
-    layersDiv.removeChild(layersDiv.lastChild);
-    delete layerNumbers[Object.keys(layerNumbers).length - 1];
+function addLayer(place) {
+  if (place == 'hidden') {
+    $("input[name='layer_output']").before('<input type="number" value="100" name="layer_hidden_'+ ($("#layersContainer > input").length - 1) +'" min="1" />');
   }
+}
+
+function removeLayer(place) {
+  if (place == 'hidden') {
+    if ($("#layersContainer > input").length > 2) {
+      $("input[name='layer_output']").prev().remove();
+    }
+  }
+}
+
+function saveLayers() {
+  architecture = [];
+  $('#layersContainer > input').each(function(index) {
+    architecture[index] = {
+      type: this.name.replace('layer_',''),
+      neurons: this.value,
+      activation: 'relu'
+    };
+  });
+}
+
+function drawLayers() {
+  var canvas = document.getElementById('layersCanvas');
+  var ctx = canvas.getContext('2d');
 }

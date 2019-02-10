@@ -22,19 +22,26 @@
             <label for="batch">Batch size</label> : <input type="number" name="batch" min="0" value="20"><br>
             <label for="learning_rate">Number of epochs</label> : <input type="number" name="learning_rate" value="0.03" min="0" max="1" step="0.001">
           </fieldset>
-          <div id="layerButtons">
-            <button onclick="addLayer()" type="button">Add layer</button>
-            <button onclick="removeLayer()" type="button">Remove layer</button>
-          </div>
+          <fieldset>
+            <legend>Couches neuronales</legend>
+            <div class="layerButtons">
+              <button onclick="addLayer('hidden')" type="button">Add layer</button>
+              <button onclick="removeLayer('hidden')" type="button">Remove layer</button>
+            </div>
+            <div id="layersContainer">
+            </div>
+            <div class="layerButtons">
+              <button onclick="saveLayers()" type="button">Save layers configuration</button>
+            </div>
+            <canvas id="layersCanvas"></canvas>
+          </fieldset>
         </p>
-        <div id="layers">
-        </div>
       </form>
     </section>
   <!-- End of main elements -->
 
   <!-- Scripts -->
-    <script src="../../frameworks/jquery-3.3.1.min.js"></script>
+    <script>window.$ = window.jQuery = require("../../frameworks/jquery-3.3.1.min.js");</script>
     <script src="../clientjs/main.js"></script>
   <!-- End of scripts -->
   </body>

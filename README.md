@@ -7,3 +7,5 @@ Created for educational and tests reasons, but feel free to adapt it however you
 
 * Version 0.0.2 : Form to choose options for training added.
 	Layers selection needs to be fully rewrote.
+
+* Version 0.0.3 : Updated client-side code to select layers.

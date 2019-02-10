@@ -16,7 +16,7 @@ body {
   font-family: $font;
 }
 form {
-  #layerButtons {
+  .layerButtons {
     margin: 10px 0;
     width: 100%;
     display: flex;
@@ -28,52 +28,29 @@ form {
     }
   }
 
-  #layers {
+  #layersContainer {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 
-    div {
+    input {
       width: 100px;
-      height: 30px;
-      background-color: $beige;
+      height: 20px;
+      padding: 0 3px;
+      background-color: $black;
+      color: $white;
       position: relative;
-
-      .inputBefore {
-        @extend %input-buttons;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-      .inputAfter {
-        @extend %input-buttons;
-        position: absolute;
-        top: 0;
-        right: 0;
-      }
-
-      input {
-        width: 50%;
-        height: 100%;
-        padding: 0;
-        border: 0;
-        position: absolute;
-        top: 0;
-        left: 25%;
-        &[type=number]::-webkit-inner-spin-button,
-        &[type=number]::-webkit-outer-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
-      }
+      border: 0;
     }
   }
-}
 
-%input-buttons {
-  width: 25%;
-  height: 100%;
-  display: block;
-  content: '';
-  background-color: blue;
+  fieldset {
+    margin-top: 10px;
+  }
+
+  canvas {
+    width: 100%;
+    height: 300px;
+    background-color: $beige;
+  }
 }
