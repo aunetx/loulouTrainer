@@ -38,8 +38,3 @@ function saveLayers() {
     };
   });
 }
-
-function drawLayers() {
-  var canvas = document.getElementById('layersCanvas');
-  var ctx = canvas.getContext('2d');
-}
