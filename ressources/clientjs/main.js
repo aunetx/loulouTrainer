@@ -1,3 +1,5 @@
+const ipc = require('electron').ipcRenderer;
+
 architecture = [
   { type: 'input', neurons: 784, activation: 'relu' },
   { type: 'hidden_1', neurons: 100, activation: 'relu' },
@@ -38,3 +40,5 @@ function saveLayers() {
     };
   });
 }
+
+ipc.send('computeIt');

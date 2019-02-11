@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron'),
+const { app, BrowserWindow, ipcMain } = require('electron'),
       sass = require('sass'),
       fs = require('fs');
 
@@ -17,9 +17,17 @@ function initCss(pathToSass, pathToCss) {
 }
 
 function createWindow () {
-  win = new BrowserWindow({ width: 1280, height: 768 });
+  win = new BrowserWindow({
+    width: 1280,
+    height: 768,
+    title: 'Loulou Trainer'
+  });
   win.loadFile('ressources/html/index.html');
 }
+
+ipcMain.on('computeIt', () => {
+  console.log('Got');
+})
 
 initCss('ressources/sass/main.scss', 'ressources/css/style.css');
 app.on('ready', createWindow);
