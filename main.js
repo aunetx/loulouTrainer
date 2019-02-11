@@ -25,8 +25,8 @@ function createWindow () {
   win.loadFile('ressources/html/index.html');
 }
 
-ipcMain.on('computeIt', () => {
-  console.log('Got');
+ipcMain.on('computeIt', (event, data) => {
+  console.log(data);
 })
 
 initCss('ressources/sass/main.scss', 'ressources/css/style.css');

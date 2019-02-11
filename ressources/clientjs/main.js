@@ -32,13 +32,16 @@ function removeLayer(place) {
 
 function saveLayers() {
   architecture = [];
+  hiddenLayersArch = [];
   $('#layersContainer > input').each(function(index) {
     architecture[index] = {
       type: this.name.replace('layer_',''),
       neurons: this.value,
       activation: 'relu'
     };
+    if (this.name.includes('layer_hidden_')) {
+      hiddenLayersArch[parseInt(this.name.replace('layer_hidden_','')) - 1] = parseInt(this.value);
+    }
   });
+  ipc.send('computeIt', hiddenLayersArch);
 }
-
-ipc.send('computeIt');
