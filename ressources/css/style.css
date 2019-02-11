@@ -31,8 +31,3 @@ form #layersContainer input {
 form fieldset {
   margin-top: 10px;
 }
-form canvas {
-  width: 100%;
-  height: 300px;
-  background-color: #E0DFD5;
-}
