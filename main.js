@@ -1,7 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron'),
       sass = require('sass'),
       fs = require('fs'),
-      spawn = require('child_process').spawn,
       { PythonShell } = require('python-shell');
 
 function initCss(pathToSass, pathToCss) {
