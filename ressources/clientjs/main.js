@@ -33,6 +33,7 @@ function removeLayer(place) {
 function saveLayers() {
   architecture = [];
   hiddenLayersArch = [];
+  hiddenLayersArch[0] = '-a'
   $('#layersContainer > input').each(function(index) {
     architecture[index] = {
       type: this.name.replace('layer_',''),
@@ -40,7 +41,7 @@ function saveLayers() {
       activation: 'relu'
     };
     if (this.name.includes('layer_hidden_')) {
-      hiddenLayersArch[parseInt(this.name.replace('layer_hidden_','')) - 1] = parseInt(this.value);
+      hiddenLayersArch[parseInt(this.name.replace('layer_hidden_',''))] = parseInt(this.value);
     }
   });
   ipc.send('computeIt', hiddenLayersArch);

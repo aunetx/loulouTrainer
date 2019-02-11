@@ -20,6 +20,7 @@
     "electron": "^4.0.4"
   },
   "dependencies": {
+    "python-shell": "^1.0.7",
     "sass": "^1.17.0"
   }
 }

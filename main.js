@@ -1,6 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron'),
       sass = require('sass'),
-      fs = require('fs');
+      fs = require('fs'),
+      spawn = require('child_process').spawn;
+const {PythonShell} = require('python-shell');
 
 function initCss(pathToSass, pathToCss) {
   sass.render({file: pathToSass}, function(err, result) {
@@ -26,7 +28,21 @@ function createWindow () {
 }
 
 ipcMain.on('computeIt', (event, data) => {
-  console.log(data);
+  data.push('-rr')
+  let options = {
+    mode: 'text',
+    pythonOptions: ['-u'], // get print results in real-time
+    scriptPath: '../loulou/scripts/',
+    args: data
+  };
+  let pyshell = new PythonShell('train.py', options);
+  pyshell.on('message', function (message) {
+    console.log(message);
+  });
+  pyshell.end(function (err,code,signal) {
+    if (err) throw err;
+    console.log('finished');
+  });
 })
 
 initCss('ressources/sass/main.scss', 'ressources/css/style.css');
