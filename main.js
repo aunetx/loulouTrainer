@@ -28,7 +28,7 @@ function createWindow () {
 }
 
 ipcMain.on('computeIt', (event, data) => {
-  data.push('-rr')
+  data.push('-r')
   let options = {
     mode: 'text',
     pythonOptions: ['-u'], // get print results in real-time

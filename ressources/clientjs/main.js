@@ -44,5 +44,14 @@ function saveLayers() {
       hiddenLayersArch[parseInt(this.name.replace('layer_hidden_',''))] = parseInt(this.value);
     }
   });
-  ipc.send('computeIt', hiddenLayersArch);
+  return hiddenLayersArch;
+}
+
+function computeIt() {
+  params = saveLayers();
+  epochs = document.getElementById('epochs').value
+  batch = document.getElementById('batch').value
+  learning_rate = document.getElementById('learning_rate').value
+  params.push('-e', epochs, '-b', batch, '-l', learning_rate);
+  ipc.send('computeIt', params);
 }
