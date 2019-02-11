@@ -9,3 +9,5 @@ Created for educational and tests reasons, but feel free to adapt it however you
 	Layers selection needs to be fully rewrote.
 
 * Version 0.0.3 : Updated client-side code to select layers.
+
+* Version 0.0.4 : Handles loulou training script.
