@@ -1,8 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron'),
       sass = require('sass'),
       fs = require('fs'),
-      spawn = require('child_process').spawn;
-const {PythonShell} = require('python-shell');
+      spawn = require('child_process').spawn,
+      { PythonShell } = require('python-shell');
 
 function initCss(pathToSass, pathToCss) {
   sass.render({file: pathToSass}, function(err, result) {
