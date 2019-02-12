@@ -11,3 +11,5 @@ Created for educational and tests reasons, but feel free to adapt it however you
 * Version 0.0.3 : Updated client-side code to select layers.
 
 * Version 0.0.4 : Handles loulou training script.
+
+* Version 0.0.5 : Shows a real-time graph of the accuracy of the training work.
