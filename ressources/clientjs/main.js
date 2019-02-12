@@ -52,6 +52,8 @@ function computeIt() {
   epochs = document.getElementById('epochs').value
   batch = document.getElementById('batch').value
   learning_rate = document.getElementById('learning_rate').value
-  params.push('-e', epochs, '-b', batch, '-l', learning_rate);
+  filename = document.getElementById('trainname').value
+  autosave = document.getElementById('autosave').value
+  params.push('-e', epochs, '-b', batch, '-l', learning_rate, '-f', filename, '-s', autosave);
   ipc.send('computeIt', params);
 }

@@ -15,11 +15,12 @@
     <section>
       <form>
         <p>
-          <label for="trainname">Name of train</label> : <input type="text" name="trainname" placeholder="name" minlength="1" maxlength="25" size="10" autofocus required>
+          <label for="trainname">Name of train</label> : <input type="text" name="trainname" placeholder="name" minlength="1" maxlength="25" size="10" id="trainname" autofocus required><br>
+          <label for="autosave">Save spacing</label> : <input type="number" name="autosave" min="0" value="5" id="autosave">
           <fieldset>
             <legend>Hyperparamètres</legend>
             <label for="epochs">Number of epochs</label> : <input type="number" name="epochs" min="0" value="30" id="epochs"><br>
-            <label for="batch">Batch size</label> : <input type="number" name="batch" min="0" value="20" id="batch"><br>
+            <label for="batch">Batch size</label> : <input type="number" name="batch" min="-1" value="20" id="batch"><br>
             <label for="learning_rate">Learning rate</label> : <input type="number" name="learning_rate" value="0.03" min="0" max="1" step="0.001" id="learning_rate">
           </fieldset>
           <fieldset>
