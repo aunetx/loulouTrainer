@@ -33,7 +33,9 @@ function removeLayer(place) {
 function saveLayers() {
   architecture = [];
   hiddenLayersArch = [];
-  hiddenLayersArch[0] = '-a'
+  if ($('#layersContainer > input').length !== undefined) {
+    hiddenLayersArch[0] = '-a';
+  }
   $('#layersContainer > input').each(function(index) {
     architecture[index] = {
       type: this.name.replace('layer_',''),
@@ -55,5 +57,6 @@ function computeIt() {
   filename = document.getElementById('trainname').value
   autosave = document.getElementById('autosave').value
   params.push('-e', epochs, '-b', batch, '-l', learning_rate, '-f', filename, '-s', autosave);
+  console.log(params);
   ipc.send('computeIt', params);
 }
