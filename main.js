@@ -20,14 +20,14 @@ function initCss(pathToSass, pathToCss) {
 function createWindow () {
   win = new BrowserWindow({
     width: 1280,
-    height: 768,
+    height: 850,
     title: 'Loulou Trainer'
   });
   win.loadFile('ressources/html/index.html');
 }
 
 ipcMain.on('computeIt', (event, data) => {
-  data.push('-r')
+  data.push('-rr')
   let options = {
     mode: 'text',
     pythonOptions: ['-u'], // get print results in real-time
@@ -37,6 +37,7 @@ ipcMain.on('computeIt', (event, data) => {
   let pyshell = new PythonShell('train.py', options);
   pyshell.on('message', function (message) {
     console.log(message);
+    event.sender.send('pythonOut', message);
   });
   pyshell.end(function (err,code,signal) {
     if (err) throw err;

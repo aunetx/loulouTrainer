@@ -59,4 +59,77 @@ function computeIt() {
   params.push('-e', epochs, '-b', batch, '-l', learning_rate, '-f', filename, '-s', autosave);
   console.log(params.join(' '));
   ipc.send('computeIt', params);
+  option = {
+    xAxis: {
+      type: 'category',
+      name: 'epochs',
+      boundaryGap : false,
+      data: createArray(epochs, 0),
+      axisLine: {
+        lineStyle: {
+          color: "#313638"
+        }
+      },
+      axisLabel: {
+        textStyle: {
+          color: "#313638"
+        }
+      }
+    },
+    yAxis: {
+      name: 'accuracy',
+      type: 'value',
+      axisLine: {
+        lineStyle: {
+          color: "#313638"
+        }
+      },
+      axisLabel: {
+        textStyle: {
+          color: "#313638"
+        }
+      },
+      min: 0,
+      max: 1,
+    },
+    series: [{
+      data: [],
+      type: 'line'
+    }],
+    color: ['#F06543']
+  };
+  chartResults.setOption(option);
 }
+
+chartResults = echarts.init(document.getElementById('chartResults'), null, {renderer: 'svg'});
+accuracyTable = [];
+ipc.on('pythonOut', (event, data) => {
+  results = data.split(' ');
+  accuracyTable[results[0]] = results[1];
+  option = {
+    xAxis: {
+      data: createArray(epochs, results[0])
+    },
+    series: [{
+      data: accuracyTable
+    }]
+  };
+  chartResults.setOption(option);
+})
+
+function createArray(number, results) {
+  if (number < 0) {
+    number = results;
+  }
+  res = []
+  for (var n = 0; n <= number; n++) {
+    res[n] = n;
+  }
+  return res
+}
+
+$(window).on('resize', function(){
+  if(chartResults != null && chartResults != undefined){
+    chartResults.resize();
+  }
+});

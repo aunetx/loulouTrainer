@@ -2,6 +2,7 @@ body {
   background-color: #E8E9EB;
   color: #313638;
   font-family: "Roboto", sans-serif;
+  transition-duration: 0.3s;
 }
 
 form .layerButtons {
@@ -30,4 +31,10 @@ form #layersContainer input {
 }
 form fieldset {
   margin-top: 10px;
+}
+
+#chartResults {
+  width: 70%;
+  height: 340px;
+  margin: auto;
 }

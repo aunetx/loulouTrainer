@@ -14,6 +14,7 @@ body {
   background-color: $primary-bg-color;
   color: $primary-color;
   font-family: $font;
+  transition-duration: .3s;
 }
 form {
   .layerButtons {
@@ -47,4 +48,10 @@ form {
   fieldset {
     margin-top: 10px;
   }
+}
+
+#chartResults {
+  width: 70%;
+  height: 340px;
+  margin: auto;
 }
