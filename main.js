@@ -31,7 +31,7 @@ ipcMain.on('computeIt', (event, data) => {
   let options = {
     mode: 'text',
     pythonOptions: ['-u'], // get print results in real-time
-    scriptPath: '../loulou/scripts/',
+    scriptPath: 'loulou/scripts/',
     args: data
   };
   let pyshell = new PythonShell('train.py', options);
