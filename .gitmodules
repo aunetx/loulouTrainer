@@ -1,0 +1,3 @@
+[submodule "loulou"]
+	path = loulou
+	url = https://github.com/aunetx/loulou
