@@ -115,6 +115,7 @@ ipc.on('pythonOut', (event, data) => {
     }]
   };
   chartResults.setOption(option);
+  document.getElementById('currentAccuracy').innerHTML = 'Accuracy = '+results[1];
 })
 
 function createArray(number, results) {
