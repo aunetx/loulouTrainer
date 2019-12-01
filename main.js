@@ -1,10 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require('electron'),
-      sass = require('sass'),
-      fs = require('fs'),
-      { PythonShell } = require('python-shell');
+  sass = require('sass'),
+  fs = require('fs'),
+  { PythonShell } = require('python-shell');
 
 function initCss(pathToSass, pathToCss) {
-  sass.render({file: pathToSass}, function(err, result) {
+  sass.render({ file: pathToSass }, function (err, result) {
     if (!err) {
       fs.writeFile(pathToCss, result.css, (err) => {
         if (!err) {
@@ -17,7 +17,7 @@ function initCss(pathToSass, pathToCss) {
   });
 }
 
-function createWindow () {
+function createWindow() {
   win = new BrowserWindow({
     width: 1280,
     height: 850,
@@ -39,7 +39,7 @@ ipcMain.on('computeIt', (event, data) => {
     console.log(message);
     event.sender.send('pythonOut', message);
   });
-  pyshell.end(function (err,code,signal) {
+  pyshell.end(function (err, code, signal) {
     if (err) throw err;
     console.log('finished');
   });

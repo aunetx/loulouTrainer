@@ -10,7 +10,7 @@ layers_container = document.getElementById('layersContainer');
 
 function initLayers() {
   for (var layer of architecture) {
-    $(layers_container).append('<input type="number" value="'+ layer.neurons +'" name="layer_'+ layer.type +'" min="1" />');
+    $(layers_container).append('<input type="number" value="' + layer.neurons + '" name="layer_' + layer.type + '" min="1" />');
   }
 }
 
@@ -18,7 +18,7 @@ initLayers();
 
 function addLayer(place) {
   if (place == 'hidden') {
-    $("input[name='layer_output']").before('<input type="number" value="100" name="layer_hidden_'+ ($("#layersContainer > input").length - 1) +'" min="1" />');
+    $("input[name='layer_output']").before('<input type="number" value="100" name="layer_hidden_' + ($("#layersContainer > input").length - 1) + '" min="1" />');
   }
 }
 
@@ -36,14 +36,14 @@ function saveLayers() {
   if ($('#layersContainer > input').length !== undefined) {
     hiddenLayersArch[0] = '-a';
   }
-  $('#layersContainer > input').each(function(index) {
+  $('#layersContainer > input').each(function (index) {
     architecture[index] = {
-      type: this.name.replace('layer_',''),
+      type: this.name.replace('layer_', ''),
       neurons: this.value,
       activation: 'relu'
     };
     if (this.name.includes('layer_hidden_')) {
-      hiddenLayersArch[parseInt(this.name.replace('layer_hidden_',''))] = parseInt(this.value);
+      hiddenLayersArch[parseInt(this.name.replace('layer_hidden_', ''))] = parseInt(this.value);
     }
   });
   return hiddenLayersArch;
@@ -63,7 +63,7 @@ function computeIt() {
     xAxis: {
       type: 'category',
       name: 'epochs',
-      boundaryGap : false,
+      boundaryGap: false,
       data: createArray(epochs, 0),
       axisLine: {
         lineStyle: {
@@ -101,7 +101,7 @@ function computeIt() {
   chartResults.setOption(option);
 }
 
-chartResults = echarts.init(document.getElementById('chartResults'), null, {renderer: 'svg'});
+chartResults = echarts.init(document.getElementById('chartResults'), null, { renderer: 'svg' });
 accuracyTable = [];
 ipc.on('pythonOut', (event, data) => {
   results = data.split(' ');
@@ -115,7 +115,7 @@ ipc.on('pythonOut', (event, data) => {
     }]
   };
   chartResults.setOption(option);
-  document.getElementById('currentAccuracy').innerHTML = 'Accuracy = '+results[1];
+  document.getElementById('currentAccuracy').innerHTML = 'Accuracy = ' + results[1];
 })
 
 function createArray(number, results) {
@@ -129,8 +129,8 @@ function createArray(number, results) {
   return res
 }
 
-$(window).on('resize', function(){
-  if(chartResults != null && chartResults != undefined){
+$(window).on('resize', function () {
+  if (chartResults != null && chartResults != undefined) {
     chartResults.resize();
   }
 });
