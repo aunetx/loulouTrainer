@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/aunetx/loulouTrainer#readme",
   "devDependencies": {
-    "electron": "^4.2.12"
+    "electron": "^9.1.0"
   },
   "dependencies": {
     "python-shell": "^1.0.8",
